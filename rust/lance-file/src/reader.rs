@@ -629,7 +629,7 @@ fn attach_blob_descriptor_children(
 /// The function is idempotent: a schema whose Blob fields already have
 /// children is returned unchanged. It takes ownership so decoding a footer
 /// does not clone a schema that is about to be wrapped in an `Arc` anyway.
-pub(crate) fn normalize_blob_footer_schema(mut schema: Schema) -> Schema {
+fn normalize_blob_footer_schema(mut schema: Schema) -> Schema {
     let expected = &BLOB_V2_DESC_LANCE_FIELD.children;
     let missing_descriptor_count = schema
         .fields_pre_order()
